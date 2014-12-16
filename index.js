@@ -4,6 +4,11 @@ var crypto = require('crypto')
 var fs = require('fs')
 
 module.exports = function(options, cb) {
+	if (Array.isArray(options)) {
+		options = {
+			files: options
+		}
+	}
 	options = options || {}
 	options.files = options.files || []
 	options.hash = options.hash || 'sha1'

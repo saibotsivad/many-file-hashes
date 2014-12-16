@@ -1,6 +1,6 @@
 {
   "name": "many-file-hashes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get the hashes of multiple files.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/saibotsivad/many-file-hashes.git"
+    "url": "git://github.com/sdmp/many-file-hashes.git"
   },
   "keywords": [
     "hash",
@@ -17,7 +17,7 @@
   "author": "saibotsivad",
   "license": "VOL",
   "bugs": {
-    "url": "https://github.com/saibotsivad/many-file-hashes/issues"
+    "url": "https://github.com/sdmp/many-file-hashes/issues"
   },
   "dependencies": {
     "promise": "~6.0.1"
