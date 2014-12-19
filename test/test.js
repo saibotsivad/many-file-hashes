@@ -20,9 +20,10 @@ var setup = {
 }
 
 test('generate hashes for single file', function(t) {
-	t.plan(2)
+	t.plan(3)
 
-	manyHashes(setup.files[0], function(hashes) {
+	manyHashes(setup.files[0], function(err, hashes) {
+		t.notOk(err, 'there should not be an error')
 		t.equal(hashes[0].hash, setup.hashes.sha1[0], 'hashes should be identical')
 		t.equal(hashes[0].original, setup.files[0], 'path should be identical')
 	})
@@ -30,9 +31,10 @@ test('generate hashes for single file', function(t) {
 })
 
 test('generate hashes for some files', function(t) {
-	t.plan(4)
+	t.plan(5)
 
-	manyHashes(setup.files, function(hashes) {
+	manyHashes(setup.files, function(err, hashes) {
+		t.notOk(err, 'there should not be an error')
 		t.equal(hashes[0].hash, setup.hashes.sha1[0], 'hashes should be identical')
 		t.equal(hashes[1].hash, setup.hashes.sha1[1], 'hashes should be identical')
 		t.equal(hashes[0].original, setup.files[0], 'path should be identical')
@@ -42,18 +44,29 @@ test('generate hashes for some files', function(t) {
 })
 
 test('generate different hashes for the same files', function(t) {
-	t.plan(4)
+	t.plan(5)
 
 	var options = {
 		files: setup.files,
 		hash: 'sha256'
 	}
 
-	manyHashes(options, function(hashes) {
+	manyHashes(options, function(err, hashes) {
+		t.notOk(err, 'there should not be an error')
 		t.equal(hashes[0].hash, setup.hashes.sha256[0], 'hashes should be identical')
 		t.equal(hashes[1].hash, setup.hashes.sha256[1], 'hashes should be identical')
 		t.equal(hashes[0].original, setup.files[0], 'path should be identical')
 		t.equal(hashes[1].original, setup.files[1], 'path should be identical')
+	})
+
+})
+
+test('run on a non-existent file', function(t) {
+	t.plan(2)
+
+	manyHashes('./not-a-real-file.fake', function(err, hashes) {
+		t.ok(err, 'there should be an error')
+		t.notOk(hashes, 'there should not be any hashes')
 	})
 
 })

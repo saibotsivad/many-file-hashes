@@ -31,6 +31,10 @@ module.exports = function(options, cb) {
 			var hash = crypto.createHash(options.hash)
 			hash.setEncoding(options.encoding)
 
+			fd.on('error', function(err) {
+				reject(err)
+			})
+
 			fd.on('end', function() {
 				hash.end()
 				file.hash = hash.read()
@@ -39,8 +43,10 @@ module.exports = function(options, cb) {
 
 			fd.pipe(hash)
 		})
-	})).then(function(resolve) {
-		cb(resolve)
+	})).then(function success(resolve) {
+		cb(null, resolve)
+	}, function failure(reject) {
+		cb(reject)
 	})
 
 }

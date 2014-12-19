@@ -10,7 +10,7 @@ Simplest use is like this (outputs `sha1` hashes in `hex` encoding):
 
 	var manyHashes = require('many-file-hashes')
 
-	manyHashes([ './file1.ext', './file2.ext' ], function(hashes) {
+	manyHashes([ './file1.ext', './file2.ext' ], function(err, hashes) {
 		/*
 		hashes = [
 			{
@@ -54,7 +54,7 @@ The first parameter can be an object, with the following optional parameters, li
 		hash: 'sha512' // any node.js hash type: http://nodejs.org/docs/v0.4.9/api/crypto.html#crypto.createHash
 	}
 
-	manyHashes(options, function(hashes) {
+	manyHashes(options, function(err, hashes) {
 		/*
 		hashes = [
 			{
