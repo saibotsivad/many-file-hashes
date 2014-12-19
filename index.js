@@ -8,8 +8,14 @@ module.exports = function(options, cb) {
 		options = {
 			files: options
 		}
+	} else if (typeof options === 'string') {
+		options = {
+			files: [ options ]
+		}
+	} else {
+		options = options || {}
 	}
-	options = options || {}
+
 	options.files = options.files || []
 	options.hash = options.hash || 'sha1'
 	options.encoding = options.encoding || 'hex'
