@@ -1,5 +1,7 @@
 # many-file-hashes
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/saibotsivad/many-file-hashes.svg)](https://greenkeeper.io/)
+
 Get the hashes of multiple files.
 
 Uses [path](https://www.npmjs.com/package/path) to resolve file path.
