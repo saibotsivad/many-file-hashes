@@ -20,9 +20,9 @@
     "url": "https://github.com/saibotsivad/many-file-hashes/issues"
   },
   "dependencies": {
-    "promise": "~6.0.1"
+    "promise": "~8.0.1"
   },
   "devDependencies": {
-    "tap": "~0.4.13"
+    "tap": "~10.7.0"
   }
 }
