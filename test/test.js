@@ -70,3 +70,17 @@ test('run on a non-existent file', function(t) {
 	})
 
 })
+
+test('use cwd if set', function(t) {
+	t.plan(3)
+
+	manyHashes({
+		files: [ 'random.dat' ],
+		cwd: './data'
+	}, function(err, hashes) {
+		t.notOk(err, 'there should not be an error')
+		t.equal(hashes[0].hash, setup.hashes.sha1[0], 'hashes should be identical')
+		t.equal(hashes[0].original, 'random.dat', 'path should be identical')
+	})
+
+})

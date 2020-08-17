@@ -23,7 +23,9 @@ module.exports = function(options, cb) {
 	Promise.all(options.files.map(function createFileObject(file) {
 		return {
 			original: file,
-			fullPath: path.resolve(file)
+			fullPath: options.cwd
+				? path.resolve(path.join(options.cwd, file))
+				: path.resolve(file)
 		}
 	}).map(function createFileHashPromise(file) {
 		return new Promise(function(resolve, reject) {

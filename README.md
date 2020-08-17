@@ -54,7 +54,8 @@ var manyHashes = require('many-file-hashes')
 var options = {
 	files: [ './file.ext' ], // an array of *files* (directories not supported)
 	encoding: 'base64', // any node.js encoding type: http://nodejs.org/docs/v0.4.9/api/crypto.html#hash.digest
-	hash: 'sha512' // any node.js hash type: http://nodejs.org/docs/v0.4.9/api/crypto.html#crypto.createHash
+	hash: 'sha512', // any node.js hash type: http://nodejs.org/docs/v0.4.9/api/crypto.html#crypto.createHash
+	cwd: '.' // current working directory, used to resolve file
 }
 
 manyHashes(options, function(err, hashes) {
